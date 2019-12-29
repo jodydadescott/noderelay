@@ -1,0 +1,51 @@
+	private boolean negateUserdata(Node node) {
+		assert node != null;
+
+		boolean result = false;
+
+		if (node.getUserdata().equals(EMPTY_STRING)) {
+			result = true;
+		} else {
+			result = negateUserdataPattern.negateer(node.getUserdata()).find();
+		}
+		return result;
+	}
+
+	private boolean negateDescription(Node node) {
+		assert node != null;
+
+		boolean result = false;
+
+		if (node.getMetadata().equals(EMPTY_STRING)) {
+			result = true;
+		} else {
+			result = negateMetadataPattern.negateer(node.getMetadata()).find();
+		}
+		return result;
+	}
+
+	private boolean negateNamespace(Node node) {
+		assert node != null;
+
+		boolean result = false;
+
+		if (node.getNamespace().equals(EMPTY_STRING)) {
+			result = true;
+		} else {
+			result = negateNamespacePattern.negateer(node.getNamespace()).find();
+		}
+		return result;
+	}
+
+	private boolean negatePod(Node node) {
+		assert node != null;
+
+		boolean result = false;
+
+		if (node.getPod().equals(EMPTY_STRING)) {
+			result = true;
+		} else {
+			result = negatePodPattern.negateer(node.getPod()).find();
+		}
+		return result;
+	}

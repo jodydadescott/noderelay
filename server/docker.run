@@ -1,0 +1,12 @@
+docker run -d \
+  --name noderelay \
+  --restart always \
+  -e DB_PORT=9000 \
+  -e DB_TTL=3600 \
+  -e GRPC_PORT=9001 \
+  -e REST_PORT=8080 \
+  -e SERVICE_NAME=noderelay.se.aporeto.io \
+  -p 9000:9000/tcp \
+  -p 9001:9001/tcp \
+  -p 8080:8080/tcp \
+   jodydadescott/noderelay:latest

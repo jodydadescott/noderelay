@@ -1,0 +1,8 @@
+err() { echo "$@" 1>&2; }
+
+check_config() {
+  rc=0
+  [[ $SECRET ]] || { err "SECRET is not set"; rc=1; }
+  [[ $REST_URL ]] || { err "REST_URL is not set"; rc=1; }
+  return $rc
+}

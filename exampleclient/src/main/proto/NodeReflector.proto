@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package noderelayclient;
+
+message Node {
+	string secret = 1;
+	string metadata = 2;
+	string userdata = 3;
+	string namespace = 4;
+	string pod = 5;
+}
+
+message NodeFilter {
+	string secret = 1;
+	string matchMetadata = 2;
+	string negateMetadata = 3;
+	string matchUserdata = 4;
+	string negateUserdata = 5;
+	string matchNamespace = 6;
+	string negateNamespace = 7;
+	string matchPod = 8;
+	string negatePod = 9;
+}
+
+service NodeService {
+	rpc search (NodeFilter) returns (stream Node) {
+	}
+	rpc get (Node) returns (Node) {
+	}
+	rpc put (Node) returns (Node) {
+	}
+	rpc delete (Node) returns (Node) {
+	}
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+main() {
+  cd $(dirname $0)
+  LOGBACK=logging.xml
+  [[ $DEBUG ]] || DEBUG=0
+  [ $DEBUG -gt 0 ] && { LOGBACK=debug-logging.xml; err "Debugging enabled"; }
+  export NET_INTERFACES=$(ip addr show | grep inet | grep -v "\b127.0.0.1/8\b" | awk '{print $2}' | awk -F/ '{print $1}')
+  java -server -Dlogback.configurationFile=$LOGBACK -jar noderelay-server.jar
+  rc=$?
+  [[ $rc -eq 130 ]] && rc=0
+  return $rc
+}
+
+err() { echo "$@" 1>&2; }
+
+main $@

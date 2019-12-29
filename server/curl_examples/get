@@ -1,0 +1,11 @@
+#!/bin/bash
+cd $(dirname $0)
+. .common
+check_config || exit $?
+
+userdata=$1
+[[ $userdata ]] || { err "Usage: $0 userdata"; exit 2; }
+
+data="{\"secret\": \"$SECRET\", \"userdata\": \"$userdata\"}"
+set -x
+curl $CURL_ARGS -d "$data" ${REST_URL}/get

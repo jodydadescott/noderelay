@@ -1,0 +1,6 @@
+# Example settigs
+#
+# You will need to source this into your shell with the command "source settings"
+#
+export SECRET=notasecret
+export REST_URL="https://noderelay.se.aporeto.io"

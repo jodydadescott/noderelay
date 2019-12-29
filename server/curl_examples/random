@@ -1,0 +1,10 @@
+#!/bin/bash
+cd $(dirname $0)
+. .common
+check_config || exit $?
+
+userdata=$(curl -s http://www.pseudorandom.name | sed "s/ /-/g" | awk '{print tolower($0)}')
+
+data="{\"secret\": \"$SECRET\", \"userdata\": \"$userdata\"}"
+set -x
+curl $CURL_ARGS -d "$data" -X POST ${REST_URL}/put

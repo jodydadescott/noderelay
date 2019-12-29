@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package noderelay.db;
+
+message Node {
+	string secret = 1;
+	string metadata = 2;
+	string userdata = 3;
+	string namespace = 4;
+	string pod = 5;
+}
+
+message NodeFilter {
+	string secret = 1;
+	string metadata = 2;
+	string negatemetadata = 3;
+	string userdata = 4;
+	string negateuserdata = 5;
+	string namespace = 6;
+	string negatenamespace = 7;
+	string pod = 8;
+	string negatepod = 9;
+}
+
+service NodeService {
+	rpc search (NodeFilter) returns (stream Node) {
+	}
+	rpc get (Node) returns (Node) {
+	}
+	rpc put (Node) returns (Node) {
+	}
+	rpc delete (Node) returns (Node) {
+	}
+}
