@@ -21,7 +21,7 @@
 		<logback.version>1.2.3</logback.version>
 		<protobuf.version>3.6.1</protobuf.version>
 		<spark.version>2.9.1</spark.version>
-		<guava.version>27.1-jre</guava.version>
+		<guava.version>29.0-jre</guava.version>
 		<maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
 		<grpc.version>1.21.0</grpc.version>
 		<dns.version>2.1.9</dns.version>
